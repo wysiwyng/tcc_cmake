@@ -12,7 +12,6 @@ ExternalProject_Add(
 	GIT_REPOSITORY "https://github.com/TinyCC/tinycc"
 	GIT_TAG "e9f59c804d41da9ba56493d5882fb75340d23c8e"
 	GIT_SHALLOW TRUE
-	GIT_PROGRESS TRUE
 
 	CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=<INSTALL_DIR>
 	BUILD_COMMAND make
@@ -25,7 +24,7 @@ ExternalProject_Add(
 ExternalProject_Get_Property(TinyCC INSTALL_DIR)
 
 target_include_directories(tcc_cmake PUBLIC ${INSTALL_DIR}/include)
-target_link_libraries(tcc_cmake ${INSTALL_DIR}/lib/libtcc.a)
+target_link_libraries(tcc_cmake ${INSTALL_DIR}/lib/libtcc.a pthread dl)
 
 add_dependencies(tcc_cmake TinyCC)
 install(TARGETS tcc_cmake DESTINATION bin)

@@ -11,10 +11,9 @@ ExternalProject_Add(
 
 	GIT_REPOSITORY "https://github.com/TinyCC/tinycc"
 	GIT_TAG "e9f59c804d41da9ba56493d5882fb75340d23c8e"
-	GIT_SHALLOW TRUE
 
 	CONFIGURE_COMMAND bash <SOURCE_DIR>/configure --prefix=<INSTALL_DIR>
-	BUILD_COMMAND make
+	BUILD_COMMAND ${MAKE}
 
 	UPDATE_COMMAND ""
 	PATCH_COMMAND ""

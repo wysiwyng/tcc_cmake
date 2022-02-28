@@ -27,16 +27,16 @@ if (UNIX)
 	target_link_directories(tcc_cmake PUBLIC ${INSTALL_DIR}/lib)
 	target_link_libraries(tcc_cmake tcc pthread dl)
 elseif (WIN32)
-	ExternalProject_Add_Step(TinyCC makelib
-		COMMAND lib /DEF:<INSTALL_DIR>/libtcc/libtcc.def /MACHINE:X64 /OUT:<INSTALL_DIR>/libtcc.lib
-		DEPENDEES install
-	)
+	#ExternalProject_Add_Step(TinyCC makelib
+	#	COMMAND lib /DEF:<INSTALL_DIR>/libtcc/libtcc.def /MACHINE:X64 /OUT:<INSTALL_DIR>/libtcc.lib
+	#	DEPENDEES install
+	#)
 	target_include_directories(tcc_cmake PUBLIC ${INSTALL_DIR}/libtcc)
 	target_link_directories(tcc_cmake
 		PUBLIC ${INSTALL_DIR}/libtcc
 		PUBLIC ${INSTALL_DIR}
 	)
-	target_link_libraries(tcc_cmake libtcc)
+	target_link_libraries(tcc_cmake libtcc.a)
 endif()
 
 

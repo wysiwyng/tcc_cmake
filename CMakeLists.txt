@@ -16,7 +16,7 @@ ExternalProject_Add(
 	BUILD_COMMAND make
 
 	UPDATE_COMMAND ""
-	PATCH_COMMAND ""
+	PATCH_COMMAND git checkout <SOURCE_DIR>/configure && git apply ${CMAKE_CURRENT_SOURCE_DIR}/0001-fix-out-of-tree-build-in-windows.patch
 	TEST_COMMAND ""
 )
 

@@ -1,0 +1,28 @@
+From ee06a1d0459bcf4d08657a3579c93b890bebc50c Mon Sep 17 00:00:00 2001
+From: wysiwyng <4764286+wysiwyng@users.noreply.github.com>
+Date: Mon, 28 Feb 2022 16:15:14 +0100
+Subject: [PATCH] fix out of tree build in windows
+
+---
+ configure | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/configure b/configure
+index f05b700..5df4f21 100755
+--- a/configure
++++ b/configure
+@@ -514,8 +514,9 @@ echo "@set VERSION $version" > config.texi
+ 
+ if test "$source_path_used" = "yes" ; then
+     case $source_path in
+-       /*) echo "TOPSRC=$source_path";;
+-	*) echo "TOPSRC=\$(TOP)/$source_path";;
++      /*) echo "TOPSRC=$source_path";;
++      ?:/*) echo "TOPSRC=$source_path";;
++      *) echo "TOPSRC=\$(TOP)/$source_path";;
+      esac >>config.mak
+ else
+      echo 'TOPSRC=$(TOP)' >>config.mak
+-- 
+2.35.1
+

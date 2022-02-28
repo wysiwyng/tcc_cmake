@@ -28,8 +28,11 @@ if (UNIX)
 	target_link_libraries(tcc_cmake tcc pthread dl)
 elseif (WIN32)
 	target_include_directories(tcc_cmake PUBLIC ${INSTALL_DIR}/libtcc)
-	#target_link_directories(tcc_cmake PUBLIC ${INSTALL_DIR0}/libtcc)
-	#target_link_libraries(tcc_cmake tcc pthread dl)
+	target_link_directories(tcc_cmake
+		PUBLIC ${INSTALL_DIR}/libtcc
+		PUBLIC ${INSTALL_DIR}
+	)
+	target_link_libraries(tcc_cmake libtcc)
 endif()
 
 

@@ -27,7 +27,7 @@ if (UNIX)
 	target_link_directories(tcc_cmake PUBLIC ${INSTALL_DIR}/lib)
 elseif (WIN32)
 	target_include_directories(tcc_cmake PUBLIC ${INSTALL_DIR}/libtcc)
-	target_link_directories(tcc_cmake PUBLIC ${INSTALL_DIR})
+	target_link_directories(tcc_cmake PUBLIC ${INSTALL_DIR0}/libtcc)
 endif()
 
 target_link_libraries(tcc_cmake tcc pthread dl)

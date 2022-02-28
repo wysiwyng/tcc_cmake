@@ -32,7 +32,7 @@ elseif (WIN32)
 	#	DEPENDEES install
 	#)
 	target_include_directories(tcc_cmake PUBLIC ${INSTALL_DIR}/libtcc)
-	target_link_libraries(tcc_cmake ${INSTALL_DIR}/libtcc/libtcc.a)
+	target_link_libraries(tcc_cmake ${INSTALL_DIR}/libtcc/libtcc.a kernel32 legacy_stdio_definitions msvcrt)
 endif()
 
 

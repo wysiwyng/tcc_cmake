@@ -25,12 +25,13 @@ ExternalProject_Get_Property(TinyCC INSTALL_DIR)
 if (UNIX)
 	target_include_directories(tcc_cmake PUBLIC ${INSTALL_DIR}/include)
 	target_link_directories(tcc_cmake PUBLIC ${INSTALL_DIR}/lib)
+	target_link_libraries(tcc_cmake tcc pthread dl)
 elseif (WIN32)
 	target_include_directories(tcc_cmake PUBLIC ${INSTALL_DIR}/libtcc)
-	target_link_directories(tcc_cmake PUBLIC ${INSTALL_DIR0}/libtcc)
+	#target_link_directories(tcc_cmake PUBLIC ${INSTALL_DIR0}/libtcc)
+	#target_link_libraries(tcc_cmake tcc pthread dl)
 endif()
 
-target_link_libraries(tcc_cmake tcc pthread dl)
 
 
 add_dependencies(tcc_cmake TinyCC)
